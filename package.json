@@ -1,0 +1,27 @@
+{
+    "name": "slack-machobot",
+    "version": "0.1.0",
+    "main": "app.js",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/jarcel/slack-machobot.git"
+    },
+    "devDependencies": {
+        "body-parser": "~1.4.2",
+        "express": "~4.5.1",
+        "forever": "^0.14.1",
+        "gulp": "^3.8.10",
+        "gulp-autoprefixer": "^2.0.0",
+        "gulp-concat": "^2.4.2",
+        "gulp-image-optimization": "^0.1.3",
+        "gulp-minify-css": "^0.5.1",
+        "gulp-ng-annotate": "^0.5.0",
+        "gulp-nodemon": "^1.0.5",
+        "gulp-sass": "^1.2.4",
+        "gulp-uglify": "^1.0.2",
+        "lodash": "^3.5.0",
+        "method-override": "~2.0.2",
+        "mongoose": "~3.8.0",
+        "serve-favicon": "^2.2.0"
+    }
+}
