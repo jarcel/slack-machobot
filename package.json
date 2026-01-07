@@ -1,13 +1,26 @@
 {
   "name": "slack-machobot",
-  "version": "0.1.0",
-  "main": "machobot.js",
+  "version": "2.0.0",
+  "description": "Macho Man Randy Savage Slack Bot",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "http://github.com/jarcel/slack-machobot.git"
   },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.17.0"
+  },
   "devDependencies": {
-    "lodash": "^3.5.0",
-    "slack-client": "^1.4.0"
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

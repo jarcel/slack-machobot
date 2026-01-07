@@ -1,7 +1,12 @@
 .DS_Store
 .sass-cache
 .sass-cache/*
-node_modules/*
+node_modules/
 raw-img/*
-
 npm-debug.log
+
+# TypeScript build output
+dist/
+
+# Environment variables (contains secrets)
+.env
