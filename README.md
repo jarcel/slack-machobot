@@ -4,46 +4,95 @@ A Node.js Macho Man themed Bot for [Slack](https://slack.com/)
 
 
 ## Introduction
-I figured it would be fun to have a basic Slack bot skeleton with a little bit of personality, 
-so I took a joke too far and made MachoBot (with a lot of help from [this article](http://blog.somewhatabstract.com/2015/03/02/writing-a-simple-slack-bot-with-node-slack-client/) by Jeff Yates). MachoBot doesn't do a whole lot. He spits out a random
+I figured it would be fun to have a basic Slack bot skeleton with a little bit of personality,
+so I took a joke too far and made MachoBot. MachoBot doesn't do a whole lot. He spits out a random
 quote from an array when you mention his name, he says "You're Welcome" when you thank him, and he elbowdrops
 pretty much anything you tell him to elbowdrop.
 
 ![Elbowdropping](https://cloud.githubusercontent.com/assets/3356278/6802587/341f5794-d208-11e4-8f80-fff0e6acad5d.jpg)
 
 
+## Requirements
+- [Node.js](https://nodejs.org/) v18 or higher
+- A Slack workspace where you can install apps
+
 ## Set Up
-MachoBot uses the [node.js slack-client](https://github.com/slackhq/node-slack-client) and [lodash](https://lodash.com/)
 
-The only real requirements to use MachoBot are that you have [node.js](https://nodejs.org/) set up on your system, and you've got an API key token for
-your bot on Slack - [learn about Bot users here](https://api.slack.com/bot-users)
+### Step 1: Create a Slack App
 
-### Step One:
-after you've got those things squared away, download machobot, open up your terminal and enter the following:
-```
-cd /your/project/directory/slack-machobot
+1. Go to [api.slack.com/apps](https://api.slack.com/apps) and click **Create New App**
+2. Choose **From scratch**, give it a name (e.g., "MachoBot"), and select your workspace
+
+### Step 2: Configure the App
+
+**Enable Socket Mode:**
+1. Go to **Socket Mode** in the sidebar
+2. Toggle **Enable Socket Mode** to On
+3. Create an App-Level Token with the `connections:write` scope
+4. Copy this token (starts with `xapp-`) - you'll need it later
+
+**Add Bot Token Scopes:**
+1. Go to **OAuth & Permissions** in the sidebar
+2. Under **Scopes > Bot Token Scopes**, add:
+   - `chat:write`
+   - `app_mentions:read`
+
+**Enable Events:**
+1. Go to **Event Subscriptions** in the sidebar
+2. Toggle **Enable Events** to On
+3. Under **Subscribe to bot events**, add:
+   - `app_mention`
+   - `message.channels`
+   - `message.groups`
+   - `message.im`
+
+**Install the App:**
+1. Go to **Install App** in the sidebar
+2. Click **Install to Workspace** and authorize
+3. Copy the **Bot User OAuth Token** (starts with `xoxb-`)
+
+### Step 3: Configure Environment Variables
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` and add your tokens:
+   ```
+   SLACK_BOT_TOKEN=xoxb-your-bot-token
+   SLACK_APP_TOKEN=xapp-your-app-token
+   ```
+
+### Step 4: Install Dependencies and Run
+
+```bash
 npm install
+npm run build
+npm start
 ```
 
-### Step Two:
-Open _machobot.js_ and replace the "TOKEN-GOES-HERE" placeholder with your API key token:
+For development with auto-reload:
+```bash
+npm run dev
 ```
-//Your Slack Bot Token -- Replace this
-var token = 'TOKEN-GOES-HERE';
+
+You should see:
 ```
-### Step Three:
-Back in the terminal, run Node.js
+MachoBot is running! Ohhhhh yeahhhh!
 ```
-node machobot.js
+
+### Step 5: Invite MachoBot to a Channel
+
+In Slack, invite the bot to a channel:
 ```
-Machobot should then join whichever channel you've allowed him to join when you set up the bot on Slack, you will
-see a message like this:
+/invite @MachoBot
 ```
-Welcome to Slack. You are machobot of YourTeamName
-You are in: general
-```
+
+## Usage
+
+- **@MachoBot** - Get a random Macho Man catchphrase
+- **@MachoBot thanks!** - MachoBot says "You're welcome!"
+- **elbowdrop @someone** - MachoBot elbowdrops them!
 
 Enjoy the Macho Madness.
-
-
-
